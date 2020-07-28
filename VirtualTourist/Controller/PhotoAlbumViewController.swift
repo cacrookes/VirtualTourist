@@ -13,8 +13,7 @@ import MapKit
 class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
 
     var container: NSPersistentContainer!
-    var latitude: CLLocationDegrees!
-    var longitude: CLLocationDegrees!
+    var coordinates: CLLocationCoordinate2D!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: MKMapView!
