@@ -21,10 +21,20 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupMap()
     }
     
     @IBAction func newCollectionPressed(_ sender: Any) {
     }
+    
+    func setupMap(){
+        let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinates
+        mapView.addAnnotation(annotation)
+    }
+    
     
 }
