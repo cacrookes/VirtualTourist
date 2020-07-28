@@ -8,9 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+    var pins = [Pin]()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,20 +29,59 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(dropPin(gestureRecognizer:)))
         mapView.addGestureRecognizer(longPressGestureRecognizer)
         mapView.delegate = self
+        
+        loadPins()
+        setUpMap()
     }
     
-    // https://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
+    // MARK: - Manage Map View
+    
+    func createAnnotation(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        mapView.addAnnotation(annotation)
+    }
+    
+    func setUpMap() {
+        for pin in pins{
+            createAnnotation(latitude: pin.latitude, longitude: pin.longitude)
+        }
+    }
+    
     @objc func dropPin(gestureRecognizer: UILongPressGestureRecognizer){
         let touchPoint = gestureRecognizer.location(in: mapView)
         let coordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinates
-        mapView.addAnnotation(annotation)
+        createAnnotation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        
+        let newPin = Pin(context: self.context)
+        newPin.latitude = coordinates.latitude
+        newPin.longitude = coordinates.longitude
+        self.pins.append(newPin)
+        self.savePins()
+    }
+    
+    // MARK: - Data Handling Methods
+    
+    func savePins() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving pin: \(error)")
+        }
+    }
+    
+    func loadPins() {
+        let request: NSFetchRequest<Pin> = Pin.fetchRequest()
+        do {
+            pins = try context.fetch(request)
+        } catch {
+            print("Error loading pins: \(error)")
+        }
     }
    
     // MARK: - MKMapView Delegate functions.
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // print(view.annotation?.coordinate.latitude)
+        print(view.annotation?.coordinate.latitude)
     }
     
     
