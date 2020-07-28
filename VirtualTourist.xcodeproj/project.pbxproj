@@ -16,6 +16,7 @@
 		33342FCC24CFDE33003CA8F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33342FCA24CFDE33003CA8F0 /* LaunchScreen.storyboard */; };
 		339B184024CFE1E40011BA0F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 339B183F24CFE1E40011BA0F /* .gitignore */; };
 		339B184224CFE2940011BA0F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184124CFE2940011BA0F /* Keys.swift */; };
+		339B184724CFE5A30011BA0F /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184624CFE5A30011BA0F /* FlickrClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		33342FCD24CFDE33003CA8F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		339B183F24CFE1E40011BA0F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		339B184124CFE2940011BA0F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		339B184624CFE5A30011BA0F /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				33342FC524CFDE32003CA8F0 /* VirtualTourist.xcdatamodeld */,
+				339B184624CFE5A30011BA0F /* FlickrClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				33342FBD24CFDE32003CA8F0 /* AppDelegate.swift in Sources */,
 				33342FBF24CFDE32003CA8F0 /* SceneDelegate.swift in Sources */,
 				339B184224CFE2940011BA0F /* Keys.swift in Sources */,
+				339B184724CFE5A30011BA0F /* FlickrClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
