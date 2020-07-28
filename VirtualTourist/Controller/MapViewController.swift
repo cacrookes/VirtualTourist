@@ -34,6 +34,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setUpMap()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.identifiers.mapToPhotosSegue {
+            let annotation = mapView.selectedAnnotations
+            let controller = segue.destination as! PhotoAlbumViewController
+            controller.container = container
+            controller.coordinates = annotation.first?.coordinate
+        }
+    }
+    
     // MARK: - Manage Map View
     
     func createAnnotation(latitude: CLLocationDegrees, longitude: CLLocationDegrees){
@@ -81,7 +90,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
    
     // MARK: - MKMapView Delegate functions.
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print(view.annotation?.coordinate.latitude)
+        print("Map View Latitude \(view.annotation?.coordinate.latitude)")
+        performSegue(withIdentifier: K.identifiers.mapToPhotosSegue, sender: self)
+        
     }
     
     
