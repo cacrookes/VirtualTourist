@@ -17,6 +17,7 @@
 		339B184024CFE1E40011BA0F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 339B183F24CFE1E40011BA0F /* .gitignore */; };
 		339B184224CFE2940011BA0F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184124CFE2940011BA0F /* Keys.swift */; };
 		339B184724CFE5A30011BA0F /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184624CFE5A30011BA0F /* FlickrClient.swift */; };
+		33E34FB724D0BD6300C6EB27 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		339B183F24CFE1E40011BA0F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		339B184124CFE2940011BA0F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		339B184624CFE5A30011BA0F /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
+		33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				33342FC024CFDE32003CA8F0 /* MapViewController.swift */,
+				33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33342FC724CFDE32003CA8F0 /* VirtualTourist.xcdatamodeld in Sources */,
+				33E34FB724D0BD6300C6EB27 /* PhotoAlbumViewController.swift in Sources */,
 				33342FC124CFDE32003CA8F0 /* MapViewController.swift in Sources */,
 				33342FBD24CFDE32003CA8F0 /* AppDelegate.swift in Sources */,
 				33342FBF24CFDE32003CA8F0 /* SceneDelegate.swift in Sources */,
