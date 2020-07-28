@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     var pins = [Pin]()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     
     // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
@@ -53,7 +53,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let coordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         createAnnotation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         
-        let newPin = Pin(context: self.context)
+        let newPin = Pin(context: self.container.viewContext)
         newPin.latitude = coordinates.latitude
         newPin.longitude = coordinates.longitude
         self.pins.append(newPin)
@@ -64,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func savePins() {
         do {
-            try context.save()
+            try container.viewContext.save()
         } catch {
             print("Error saving pin: \(error)")
         }
@@ -73,7 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func loadPins() {
         let request: NSFetchRequest<Pin> = Pin.fetchRequest()
         do {
-            pins = try context.fetch(request)
+            pins = try container.viewContext.fetch(request)
         } catch {
             print("Error loading pins: \(error)")
         }
