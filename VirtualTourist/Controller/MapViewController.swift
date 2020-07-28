@@ -36,10 +36,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.identifiers.mapToPhotosSegue {
-            let annotation = mapView.selectedAnnotations
+            let annotation = mapView.selectedAnnotations.first
             let controller = segue.destination as! PhotoAlbumViewController
+            
+            // find the pin object corresponding to the annotation by comparing coordinates
+            for pin in pins{
+                if pin.longitude == annotation?.coordinate.longitude && pin.latitude == annotation?.coordinate.latitude {
+                    controller.pin = pin
+                    break
+                }
+            }
+            
             controller.container = container
-            controller.coordinates = annotation.first?.coordinate
+            
         }
     }
     
@@ -90,9 +99,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
    
     // MARK: - MKMapView Delegate functions.
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("Map View Latitude \(view.annotation?.coordinate.latitude)")
         performSegue(withIdentifier: K.identifiers.mapToPhotosSegue, sender: self)
-        
     }
     
     
