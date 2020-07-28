@@ -15,13 +15,13 @@ class FlickrClient {
         static let base = "http://api.flickr.com/services/rest/?format=json"
         static let apiKeyParam = "&api_key=\(FlickrClient.apiKey)"
         
-        case getPhotosByCoordinates(Double, Double, Int)
+        case getPhotosByCoordinates(Double, Double, Int, Int)
         
         var stringValue: String {
             switch self {
                 
-            case .getPhotosByCoordinates(let latitude, let longitude, let radiusInKM):
-                return Endpoints.base + "&method=flickr.photos.search" + Endpoints.apiKeyParam + "&lat=\(latitude)&lon=\(longitude)&radius=\(radiusInKM)"
+            case .getPhotosByCoordinates(let latitude, let longitude, let radiusInKM, let pageNum):
+                return Endpoints.base + "&method=flickr.photos.search" + Endpoints.apiKeyParam + "&lat=\(latitude)&lon=\(longitude)&radius=\(radiusInKM)&per_page=20&page=\(pageNum)"
             }
         }
         
