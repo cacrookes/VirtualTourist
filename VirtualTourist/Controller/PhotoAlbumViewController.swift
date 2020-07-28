@@ -13,7 +13,7 @@ import MapKit
 class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
 
     var container: NSPersistentContainer!
-    var coordinates: CLLocationCoordinate2D!
+    var pin: Pin!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: MKMapView!
@@ -29,6 +29,7 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func setupMap(){
+        let coordinates = CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
