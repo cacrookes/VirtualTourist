@@ -11,5 +11,6 @@ import Foundation
 struct K {
     struct identifiers {
         static let mapToPhotosSegue = "mapToPhotosSegue"
+        static let photoAlbumCollectionViewCell = "PhotoAlbumCollectionViewCell"
     }
 }
