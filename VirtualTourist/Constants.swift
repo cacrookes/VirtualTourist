@@ -9,11 +9,11 @@
 import Foundation
 
 struct K {
-    struct identifiers {
+    struct Identifiers {
         static let mapToPhotosSegue = "mapToPhotosSegue"
         static let photoAlbumCollectionViewCell = "PhotoAlbumCollectionViewCell"
     }
-    struct userDefaultValues {
+    struct UserDefaultValues {
         static let longitude = "lastLongitude"
         static let latitude = "lastLatitude"
         static let latitudeDelta = "lastLatitudeDelta"
