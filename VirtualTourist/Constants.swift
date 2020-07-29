@@ -13,4 +13,11 @@ struct K {
         static let mapToPhotosSegue = "mapToPhotosSegue"
         static let photoAlbumCollectionViewCell = "PhotoAlbumCollectionViewCell"
     }
+    struct userDefaultValues {
+        static let longitude = "lastLongitude"
+        static let latitude = "lastLatitude"
+        static let latitudeDelta = "lastLatitudeDelta"
+        static let longitudeDelta = "lastLongitudeDelta"
+    }
 }
+
