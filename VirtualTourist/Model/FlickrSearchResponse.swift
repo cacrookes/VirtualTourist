@@ -19,7 +19,7 @@ struct FlickrSearchResponse: Codable {
     struct Photo: Codable {
         let id: String
         let owner: String
-        let secrect: String
+        let secret: String
         let server: String
         let farm: Int
         let title: String
