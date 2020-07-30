@@ -18,7 +18,7 @@ class FlickrClient {
             "format=json",
             "method=flickr.photos.search",
             "radius=10",
-            "per_page=20",
+            "per_page=\(K.PhotoRequestParams.numToFetch)",
             "extras=url_m"
         ].joined(separator: "&")
         
