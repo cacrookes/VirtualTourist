@@ -20,6 +20,7 @@ class PhotoAlbumViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var newCollectionButton: UIButton!
     
     // MARK: - View life cycle methods
     override func viewDidLoad() {
@@ -49,7 +50,19 @@ class PhotoAlbumViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func newCollectionPressed(_ sender: Any) {
-        
+        // Delete all of the current photos
+        if let photos = fetchedResultsController.fetchedObjects {
+            for photo in photos {
+                container.viewContext.delete(photo)
+                do {
+                    try container.viewContext.save()
+                } catch {
+                    print("Error with batch delete.")
+                }
+            }
+        }
+        // repopulate with new photos
+        fetchPhotos()
     }
     
     
@@ -82,7 +95,11 @@ class PhotoAlbumViewController: UIViewController {
                 newPhoto.id = Int32(photo.id) ?? 0
                 
                 if let imageURL = URL(string: photo.url_m){
+                    // disable new collection button during downloading
+                    self.newCollectionButton.isEnabled = false
                     self.downloadImage(atUrl: imageURL) { (imageData) in
+                        // download finished, so reenable new collection button
+                        self.newCollectionButton.isEnabled = true
                         newPhoto.image = imageData
                         do {
                             try self.container.viewContext.save()
@@ -121,9 +138,7 @@ class PhotoAlbumViewController: UIViewController {
         
     func setFlowLayout() {
         let space:CGFloat = 3.0
-        
-        print("setting flow layout")
-        
+                
         // set the dimensions of the cell so we get 3 columns in portrait, or 3 rows in landscape
         let viewWidth = view.frame.size.width
         let viewHeight = view.frame.size.height
