@@ -83,12 +83,19 @@ class PhotoAlbumViewController: UIViewController {
     }
     
     func fetchPhotos() {
-        FlickrClient.getPhotos(forLatitude: pin.latitude, forLongitude: pin.longitude, forPageNumber: 1) { (flickrSearchResponse, error) in
+        var numPages = (Int(pin.numPhotos) / K.PhotoRequestParams.numToFetch)
+        if numPages == 0 {
+            numPages = 1
+        }
+        let pageNum = Int.random(in: 1...numPages)
+        
+        FlickrClient.getPhotos(forLatitude: pin.latitude, forLongitude: pin.longitude, forPageNumber: pageNum) { (flickrSearchResponse, error) in
             if error != nil {
                 print(error!)
                 return
             }
             guard let response = flickrSearchResponse else { return }
+            self.pin.numPhotos = Int32(response.photos.total) ?? 0
             for photo in response.photos.photo {
                 let newPhoto = Photo(context: self.container.viewContext)
                 newPhoto.pin = self.pin
