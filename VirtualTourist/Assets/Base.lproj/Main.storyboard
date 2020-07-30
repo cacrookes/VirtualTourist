@@ -110,6 +110,7 @@
                         <outlet property="collectionView" destination="dbv-Rl-TzB" id="wiA-ue-4j0"/>
                         <outlet property="flowLayout" destination="ZcB-SO-fla" id="XBJ-O9-0Pa"/>
                         <outlet property="mapView" destination="yUW-8i-TsZ" id="DLU-NU-ew6"/>
+                        <outlet property="newCollectionButton" destination="ZqC-K3-bd0" id="rbp-oB-jxJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6o9-l9-n9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
