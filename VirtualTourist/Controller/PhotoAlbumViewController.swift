@@ -89,13 +89,14 @@ class PhotoAlbumViewController: UIViewController {
                 let newPhoto = Photo(context: self.container.viewContext)
                 newPhoto.pin = self.pin
                 newPhoto.id = Int32(photo.id) ?? 0
+                
                 if let imageURL = URL(string: photo.url_m){
-                    DispatchQueue.main.async {
-                        newPhoto.image = try? Data(contentsOf: imageURL)
+                    self.downloadImage(atUrl: imageURL) { (imageData) in
+                        newPhoto.image = imageData
                         do {
                             try self.container.viewContext.save()
                         } catch {
-                             print("Error saving photo: \(error)")
+                            print("Error saving image data: \(error)")
                         }
                     }
                 }
@@ -104,9 +105,16 @@ class PhotoAlbumViewController: UIViewController {
                 } catch {
                      print("Error saving photo: \(error)")
                 }
-                //self.collectionView.reloadData()
             }
-            //self.collectionView.reloadData()
+        }
+    }
+    
+    func downloadImage(atUrl url: URL, completionHandler handler: @escaping (_ imageData: Data) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let imageData = try? Data(contentsOf: url)
+            DispatchQueue.main.async {
+                handler(imageData!)
+            }
         }
     }
     
