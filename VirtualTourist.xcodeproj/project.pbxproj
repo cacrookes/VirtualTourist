@@ -18,6 +18,9 @@
 		339B184224CFE2940011BA0F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184124CFE2940011BA0F /* Keys.swift */; };
 		339B184724CFE5A30011BA0F /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B184624CFE5A30011BA0F /* FlickrClient.swift */; };
 		33E34FB724D0BD6300C6EB27 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */; };
+		33E34FB924D0C59D00C6EB27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34FB824D0C59D00C6EB27 /* Constants.swift */; };
+		33E34FBD24D0F64900C6EB27 /* PhotoAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34FBC24D0F64900C6EB27 /* PhotoAlbumCollectionViewCell.swift */; };
+		33E34FBF24D10AF300C6EB27 /* FlickrSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34FBE24D10AF300C6EB27 /* FlickrSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		339B184124CFE2940011BA0F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		339B184624CFE5A30011BA0F /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		33E34FB824D0C59D00C6EB27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		33E34FBC24D0F64900C6EB27 /* PhotoAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		33E34FBE24D10AF300C6EB27 /* FlickrSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 				33342FCD24CFDE33003CA8F0 /* Info.plist */,
 				339B183F24CFE1E40011BA0F /* .gitignore */,
 				339B184124CFE2940011BA0F /* Keys.swift */,
+				33E34FB824D0C59D00C6EB27 /* Constants.swift */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 			children = (
 				33342FC524CFDE32003CA8F0 /* VirtualTourist.xcdatamodeld */,
 				339B184624CFE5A30011BA0F /* FlickrClient.swift */,
+				33E34FBE24D10AF300C6EB27 /* FlickrSearchResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +100,7 @@
 			children = (
 				33342FC024CFDE32003CA8F0 /* MapViewController.swift */,
 				33E34FB624D0BD6300C6EB27 /* PhotoAlbumViewController.swift */,
+				33E34FBC24D0F64900C6EB27 /* PhotoAlbumCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,8 +192,11 @@
 				33342FC124CFDE32003CA8F0 /* MapViewController.swift in Sources */,
 				33342FBD24CFDE32003CA8F0 /* AppDelegate.swift in Sources */,
 				33342FBF24CFDE32003CA8F0 /* SceneDelegate.swift in Sources */,
+				33E34FBD24D0F64900C6EB27 /* PhotoAlbumCollectionViewCell.swift in Sources */,
 				339B184224CFE2940011BA0F /* Keys.swift in Sources */,
 				339B184724CFE5A30011BA0F /* FlickrClient.swift in Sources */,
+				33E34FBF24D10AF300C6EB27 /* FlickrSearchResponse.swift in Sources */,
+				33E34FB924D0C59D00C6EB27 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QJT9J5N9N;
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -349,6 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QJT9J5N9N;
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
