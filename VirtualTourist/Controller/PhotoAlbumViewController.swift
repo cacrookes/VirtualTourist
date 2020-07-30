@@ -96,6 +96,9 @@ class PhotoAlbumViewController: UIViewController {
             }
             guard let response = flickrSearchResponse else { return }
             self.pin.numPhotos = Int32(response.photos.total) ?? 0
+            if response.photos.photo.count == 0 {
+                self.createNoResultsLabel()
+            }
             for photo in response.photos.photo {
                 let newPhoto = Photo(context: self.container.viewContext)
                 newPhoto.pin = self.pin
@@ -155,6 +158,13 @@ class PhotoAlbumViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
+    func createNoResultsLabel() {
+        let label = UILabel(frame: CGRect(x: 0, y: mapView.frame.maxY  + 32, width: view.frame.width, height: 21))
+        label.textAlignment = .center
+        label.text = "No images at this location."
+        self.view.addSubview(label)
     }
 }
 
