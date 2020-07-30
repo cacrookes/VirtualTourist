@@ -12,6 +12,7 @@ import MapKit
 
 class PhotoAlbumViewController: UIViewController {
 
+    // MARK: - Global variables and IBOutlets
     var container: NSPersistentContainer!
     var pin: Pin!
     var fetchedResultsController: NSFetchedResultsController<Photo>!
@@ -20,6 +21,7 @@ class PhotoAlbumViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    // MARK: - View life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,25 +46,12 @@ class PhotoAlbumViewController: UIViewController {
         fetchedResultsController = nil
     }
     
+    // MARK: - IBActions
     @IBAction func newCollectionPressed(_ sender: Any) {
     }
     
-    func setFlowLayout() {
-        let space:CGFloat = 3.0
-        
-        print("setting flow layout")
-        
-        // set the dimensions of the cell so we get 3 columns in portrait, or 3 rows in landscape
-        let viewWidth = view.frame.size.width
-        let viewHeight = view.frame.size.height
-        let shortSize = viewWidth < viewHeight ? view.frame.size.width : view.frame.size.height
-        let dimension = (shortSize - (2 * space)) / 3.0
-
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-    }
     
+    // MARK: - Core Data Methods
     fileprivate func setupFetchedResultController() {
         let fetchRequest:NSFetchRequest<Photo> = Photo.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "pin == %@", pin)
@@ -118,6 +107,7 @@ class PhotoAlbumViewController: UIViewController {
         }
     }
     
+    // MARK: - View Setup Methods
     func setupMap(){
         let coordinates = CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
@@ -127,8 +117,24 @@ class PhotoAlbumViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
         
+    func setFlowLayout() {
+        let space:CGFloat = 3.0
+        
+        print("setting flow layout")
+        
+        // set the dimensions of the cell so we get 3 columns in portrait, or 3 rows in landscape
+        let viewWidth = view.frame.size.width
+        let viewHeight = view.frame.size.height
+        let shortSize = viewWidth < viewHeight ? view.frame.size.width : view.frame.size.height
+        let dimension = (shortSize - (2 * space)) / 3.0
+
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
 }
 
+// MARK: - UICollectionViewDataSource Methods
 extension PhotoAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numResults = fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -146,6 +152,7 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - NSFetchedResultsControllerDelegate Methods
 extension PhotoAlbumViewController:NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -176,6 +183,4 @@ extension PhotoAlbumViewController:NSFetchedResultsControllerDelegate {
             fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). Only .insert or .delete should be possible.")
         }
     }
-    
-    
 }
