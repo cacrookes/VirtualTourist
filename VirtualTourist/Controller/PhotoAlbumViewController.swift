@@ -26,6 +26,7 @@ class PhotoAlbumViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         setupMap()
         setupFetchedResultController()
         
@@ -48,6 +49,7 @@ class PhotoAlbumViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func newCollectionPressed(_ sender: Any) {
+        
     }
     
     
@@ -134,8 +136,8 @@ class PhotoAlbumViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource Methods
-extension PhotoAlbumViewController: UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource and UICollectionViewDelegate Methods
+extension PhotoAlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numResults = fetchedResultsController.sections?[section].numberOfObjects ?? 0
         return numResults
@@ -149,6 +151,16 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
             cell.imageView.image = UIImage(data: photoImage)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoToDelete = self.fetchedResultsController.object(at: indexPath)
+        self.container.viewContext.delete(photoToDelete)
+        do {
+            try self.container.viewContext.save()
+        } catch {
+             print("Error deleting photo: \(error)")
+        }
     }
 }
 
