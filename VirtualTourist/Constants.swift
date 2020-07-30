@@ -19,5 +19,8 @@ struct K {
         static let latitudeDelta = "lastLatitudeDelta"
         static let longitudeDelta = "lastLongitudeDelta"
     }
+    struct PhotoRequestParams {
+        static let numToFetch = 20
+    }
 }
 
