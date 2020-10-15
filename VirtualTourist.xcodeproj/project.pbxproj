@@ -33,6 +33,7 @@
 		33342FC824CFDE33003CA8F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33342FCB24CFDE33003CA8F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33342FCD24CFDE33003CA8F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		333C26A12537EA8A002C9EB1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		339B183F24CFE1E40011BA0F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		339B184124CFE2940011BA0F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		339B184624CFE5A30011BA0F /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		33342FB024CFDE32003CA8F0 = {
 			isa = PBXGroup;
 			children = (
+				333C26A12537EA8A002C9EB1 /* README.md */,
 				33342FBB24CFDE32003CA8F0 /* VirtualTourist */,
 				33342FBA24CFDE32003CA8F0 /* Products */,
 			);
